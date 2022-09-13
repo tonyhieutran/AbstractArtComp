@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="artstyle.css">
+    <script src="artscript.js" defer></script>
+    <title>ABSTRACT ART COMPETITION | Create and submit to WIN</title>
+</head>
+<body>
+
+
+<div class="outer-container">
+    <div class="container-left" > <h2 style="font-size: 20px;">DRAWING TOOLS</h2>
+        <!-- Navigation section with parameters positioned left side of document   -->
+            <div class="itemcontainer"><strong>CIRCLE</strong>
+                <!-- Circle parameters section -->
+                <input type="button" id="circlebutton" value="Draw Circle">
+                <div class="item">
+                    <label for="linecircle">Line Color:</label>
+                    <input type="color" id="linecircle" name="linecircle" value="#0000FF">
+                </div>
+                <div class="item">
+                    <label for="fillcircle">Fill Color:</label>
+                    <input type="color" id="fillcircle" name="fillcircle" value="#33FF33">
+                </div>
+                <div class="item">
+                    <label for="xcircle">X Coordinate (0 - 400):</label>
+                    <input type="number" id="xcircle" name="xcircle" min="0" value="0" max="400" required>
+                </div>
+                <div class="item">
+                    <label for="ycircle">Y Coordinate (0 - 400):</label>
+                    <input type="number" id="ycircle" name="ycircle" min="0" value="0" max="400" required>
+                </div>
+                <div class="item">
+                    <label for="radius">Radius (1 - 400):</label>
+                    <input type="range" id="radius" min="1" value="100" max="400" required>
+                </div>
+            </div>
+        
+            <div class="itemcontainer"><strong> QUADRILATERAL </strong> 
+                <!-- Quadrilateral section -->
+                <input type="button" id = "quadbutton" value="Draw Quadrilateral">
+                <div class="item">
+                    <label for="linequad">Line Color:</label>
+                    <input type="color" id="linequad" name="linequad" value="#FF6600">
+                </div>
+                <div class="item">
+                    <label for="fillquad">Fill Color:</label>
+                    <input type="color" id="fillquad" name="fillquad" value="#6600FF">
+                </div>
+                <div class="item">
+                    <label for="xquad">X Coordinate (0 - 400):</label>
+                    <input type="number" id="xquad" name="xquad" min="0" placeholder="0" max="400" required>
+                </div>
+                <div class="item">
+                    <label for="yquad">Y Coordinate (0 - 400):</label>
+                    <input type="number" id="yquad" name="yquad" min="0" value="0" max="400" required>
+                </div>
+                <div class="item">
+                    <label for="wquad">Width (1 - 400):</label>
+                    <input type="number" id="wquad" name="wquad" min="1" value="1" max="400" required>
+                </div>
+                <div class="item">
+                    <label for="hquad">Height (1 - 400):</label>
+                    <input type="number" id="hquad" name="hquad" min="1" value="1" max="400" required>
+                </div>
+            </div>
+        
+            <div class="itemcontainer"> <strong>LINE</strong>
+                <!-- Line Section -->
+                <input type="button" id = "linebutton" value="Draw Line">
+                <div class="item">
+                    <label for="linecolor">Line Color:</label>
+                    <input type="color" id="linecolor" name="linecolor" value="#CC66FF">
+                </div>
+                <div class="item">
+                    <label for="xstart">Start X Coord (0 - 400):</label>
+                    <input type="number" id="xstart" name="xstart" min="0" value="0" max="400" required>
+                </div>
+                <div class="item">
+                    <label for="ystart">Start Y Coord (0 - 400):</label>
+                    <input type="number" id="ystart" name="ystart" min="0" value="0" max="400" required>
+                </div>
+                <div class="item">
+                    <label for="xend">End X Coord (0 - 400):</label>
+                    <input type="number" id="xend" name="xend" min="0" value="0" max="400" required>
+                </div>
+                <div class="item">
+                    <label for="yend">End Y Coord (0 - 400):</label>
+                    <input type="number" id="yend" name="yend" min="0" value="0" max="400" required>
+                </div>
+            </div>
+            <div><label for="lineth"><strong>Thickness (1 - 200)</strong></label>
+            <input type="range" id="lineth" min="1" value="20" max="200" required></div>
+        </div>
+    <!-- Right section of webpage -->
+    <div class="container-right">
+    <!-- Sections holds the language and clear buttons, title, instructions and canvas     -->
+        <div class="right-items">
+            <input type="button" id="engbutton" value="English" onclick="langchange('english')">
+            <input type="button" id="spabutton" value="Spanish" onclick="langchange('spanish')">
+        </div>
+        <div class="center-top">
+         <!-- Main Heading Holder and Instructions-->   
+            <h1 id="h1title" class="headcolor">ABSTRACT ART COMPETITION</h1>
+            <p id="pInstructions" class="headcolor"><br><strong> INSTRUCTIONS </strong>
+                <br>Input parameters then draw shape. Line Thickness is universal.
+                <br>To start again click Clear.
+                <br>Right click to save the drawing as a png.
+                <br>Upload your image.
+                <br>Fill the submission form and submit.
+                <br>GOOD LUCK!
+            </p>  
+        </div>
+        <div>
+            <p id="coordxy">X: Y:</p>
+        </div>
+        <div class="canvas-container"><!-- Canvas holder -->
+            <canvas class="mycanvas" id="mycanvas">
+            </canvas>
+        </div>
+        <div class="clear-item">
+            <input type="button" id="clearbutton" value="Clear" onclick="clearRect">
+        </div>
+
+        <form id="fs-frm" name="file-upload-form" accept-charset="utf-8" action="process.php" method="post" enctype="multipart/form-data">
+        <!-- Form for submission -->
+        <div class="sub-container"> <strong>SUBMISSION FORM </strong>
+            <div>
+                <label for="userName">Username:</label>
+                <input type="text" name="userName" id="userName" required>
+            </div>
+            <div> 
+                <label for="email-address">Email: </label>
+                <input type="email" name="email" id="email-address" placeholder="email@email.com" required>
+            </div>
+            <div> 
+                <label for="pwd">Password (8 characters minimum):</label>
+                <input type="password" id="pwd" name="pwd" minlength="8" required >
+            </div>
+            <div>
+                <label for="cnfpwd">Confirm Password:</label>
+                <input type="password" id="cnfpwd" name="pwd" minlength="8" required>
+            </div>
+            <div>
+                <label for="phone">Contact Number:</label>
+                <input type="tel" id="phone" name="phone" size = "18" placeholder="0499999999" pattern="[0-9]{4}[0-9]{3}[0-9]{3}" required>
+            </div>
+            <div>
+                <label for="upload"> </label>
+                <input type="file" name="upload" accept=".png" required>
+            </div>
+            <div>
+                <input type="submit" value="Submit" id="submit">
+                <input type="reset" value="Reset">    
+            </div>
+        </div>
+        </form>      
+    </div>
+</div>
+</body>
+</html>
